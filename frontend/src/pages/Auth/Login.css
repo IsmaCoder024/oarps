@@ -1,0 +1,173 @@
+.login-page {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.38), rgba(15, 23, 42, 0.38)),
+    url("../../assets/authBg.jpg") center center / cover no-repeat;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.login-page *,
+.login-page *::before,
+.login-page *::after {
+  box-sizing: border-box;
+}
+
+.flash-message {
+  background-color: #a589a1;
+  z-index: 1000;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  size: 20px;
+}
+
+.login-message {
+  margin: 0 0 16px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  color: #0f8f09;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.error-message {
+  margin: 0 0 16px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  color: #de0e0e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow:
+    0 1px 3px rgba(16, 24, 40, 0.06),
+    0 8px 24px rgba(16, 24, 40, 0.06);
+  padding: 40px 44px 36px;
+}
+
+.login-title {
+  font-family: cursive;
+  display: flex;
+  justify-content: center;
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #be6fb2;
+  letter-spacing: -0.01em;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.login-field input {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: #111827;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.login-field input::placeholder {
+  color: #9ca3af;
+}
+
+.login-field input:focus {
+  border-color: #5b5bd6;
+  box-shadow: 0 0 0 3px rgba(91, 91, 214, 0.15);
+}
+
+.login-submit {
+  width: 100%;
+  height: 46px;
+  margin-top: 8px;
+  background: #5b5bd6;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  font-family: inherit;
+}
+
+.login-submit:hover {
+  background: #4d4dc7;
+}
+
+.login-submit:focus-visible {
+  outline: 2px solid #5b5bd6;
+  outline-offset: 2px;
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  padding-right: 42px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .login-card {
+    padding: 28px 20px 24px;
+  }
+}
