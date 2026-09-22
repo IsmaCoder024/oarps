@@ -104,9 +104,9 @@ export default function CreateActivity() {
                 Branch
               </label>
               <select
-                id="branch"
-                name="branch"
-                value={form.branch}
+                id="branch_id"
+                name="branch_id"
+                value={form.branch_id}
                 onChange={handleChange}
                 required
               >
@@ -122,9 +122,9 @@ export default function CreateActivity() {
                 Department
               </label>
               <select
-                id="department"
-                name="department"
-                value={form.department}
+                id="department_id"
+                name="department_id"
+                value={form.department_id}
                 onChange={handleChange}
                 required
               >

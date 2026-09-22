@@ -8,7 +8,7 @@ function ProtectedRoute() {
     const location = useLocation();
 
     if (loading) {
-        return <Loading isLoading={loading} message="Checking authentication..." />;
+        return <Loading isLoading={loading} message="Loading data..." />;
     }
 
     if (!user) {

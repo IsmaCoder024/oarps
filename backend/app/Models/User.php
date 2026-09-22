@@ -50,4 +50,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //hod->activities
+    public function assigns(){
+        return $this->hasMany(Activity::class);
+    }
 }

@@ -27,7 +27,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/editUser/{id}', [UserController::class, 'edit']);
     Route::delete('/deleteUser/{id}', [UserController::class, 'delete']);
 
+    Route::get('/hods', [DepartmentController::class, 'hod']);
+    Route::post('/createDepartment', [DepartmentController::class, 'create']);
+
+
     Route::post('/createActivity', [ActivityController::class, 'create']);
+    Route::get('/assignedActivity', [ActivityController::class, 'viewAssigned']);
+    
+
 
 });
 

@@ -21,8 +21,13 @@ class Department extends Model
     protected $fillable = [
         'name',
         'branch_id',
+        'hod_id',
         'description'
     ];
+
+    public function activities(){
+        return $this->hasMany(Activity::class, 'department_id');
+    }
 
 
 }

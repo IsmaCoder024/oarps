@@ -162,7 +162,7 @@ export default function UserManagement() {
                 <p>{user.email}</p>
                 <p>{user.phone}</p>
                 <p>{user.branch} - Branch</p>
-                <p>{user.department}</p>
+                <p>{user.title}, {user.department}</p>
               </div>
 
               <div className="user-card__actions">

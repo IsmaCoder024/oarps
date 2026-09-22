@@ -20,4 +20,12 @@ class Activity extends Model
         'remarks',
 
     ];
+
+    public function department(){
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function hod(){
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }
