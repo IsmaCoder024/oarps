@@ -1,89 +1,276 @@
-.auth-header {
-  margin-top: 0px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 40%;
-  padding: 14px 18px;
-  border-radius: 0px;
-  background: rgba(15, 23, 42, 0.34);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
-  color: #010101;
+body {
+  margin: 0;
+  color: #211d1a;
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
 }
 
-.header-logo {
-  display: flex;
+.site-header {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) auto minmax(170px, 1fr);
   align-items: center;
-  min-width: 0;
+  min-height: 82px;
+  padding: 10px clamp(20px, 4.5vw, 72px);
+  background: #fffefa;
+  border-bottom: 1px solid rgba(45, 37, 30, 0.1);
 }
 
-.header-brand {
+.site-header__brand-link {
   display: inline-flex;
   align-items: center;
-  color: #ffffff;
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  text-decoration: none;
-  white-space: nowrap;
+  width: fit-content;
 }
 
-.header-brand:hover {
-  color: #e0e7ff;
+.site-header__menu-toggle,
+.site-header__scrim {
+  display: none;
 }
 
-.header-nav {
-    justify-self:center;
+.site-header__drawer {
+  display: contents;
 }
 
-.header-links {
+.site-header__logo {
+  display: block;
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+}
+
+.site-header__nav {
+  justify-self: center;
+}
+
+.site-header__links,
+.site-header__actions {
   display: flex;
   align-items: center;
-  gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.header-links a {
+.site-header__links {
+  gap: clamp(14px, 2.8vw, 42px);
+}
+
+.site-header__links a,
+.site-header__login {
+  color: #302a25;
+  font-size: 0.94rem;
+  font-weight: 550;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.site-header__links a:hover,
+.site-header__login:hover {
+  color: #a56e11;
+}
+
+.site-header__actions {
+  justify-self: end;
+  gap: 22px;
+}
+
+.site-header__user {
   display: inline-flex;
   align-items: center;
-  padding: 8px 10px;
-  border-radius: 999px;
-  color: rgba(0, 0, 0, 0.9);
-  text-decoration: none;
-  font-size: 1rem;
+  gap: 8px;
+  color: #302a25;
+  font-size: 0.94rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.site-header__user svg {
+  flex: 0 0 auto;
+  color: #a97619;
+}
+
+.site-header__logout {
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: #302a25;
+  font: inherit;
+  font-size: 0.94rem;
   font-weight: 600;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
+  cursor: pointer;
+  transition: color 160ms ease;
 }
 
-.header-links a:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
+.site-header__logout:hover {
+  color: #a56e11;
 }
 
-.header-links a:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 2px;
+.site-header__signup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 19px;
+  border-radius: 6px;
+  background: #29231f;
+  color: #fffefa;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 160ms ease;
 }
 
-@media (max-width: 560px) {
-  .auth-header {
-    width: 100%;
-    padding: 12px 14px;
+.site-header__signup:hover {
+  background: #9b6814;
+}
+
+.site-header a:focus-visible {
+  outline: 2px solid #b47c1c;
+  outline-offset: 4px;
+}
+
+.site-header__logout:focus-visible {
+  outline: 2px solid #b47c1c;
+  outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    min-height: 70px;
+    padding: 7px 18px;
+  }
+
+  .site-header__menu-toggle {
+    position: relative;
+    z-index: 6;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid rgba(45, 37, 30, 0.16);
+    border-radius: 5px;
+    background: #fffefa;
+    color: #29231f;
+    cursor: pointer;
+  }
+
+  .site-header__menu-toggle:hover {
+    border-color: #a97619;
+    color: #805b1b;
+  }
+
+  .site-header__menu-toggle:focus-visible {
+    outline: 2px solid #b47c1c;
+    outline-offset: 3px;
+  }
+
+  .site-header__scrim {
+    position: fixed;
+    z-index: 4;
+    inset: 0;
+    display: block;
+    border: 0;
+    background: rgba(24, 20, 16, 0.48);
+    cursor: default;
+  }
+
+  .site-header__drawer {
+    position: fixed;
+    z-index: 5;
+    inset: 0 0 0 auto;
+    display: flex;
+    width: min(86vw, 360px);
+    height: 100vh;
+    height: 100dvh;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 34px;
+    padding: 104px 28px 30px;
+    overflow-y: auto;
+    background:
+      radial-gradient(circle at 100% 0, rgba(216, 173, 75, 0.2), transparent 38%),
+      #fffefa;
+    box-shadow: -18px 0 46px rgba(31, 25, 17, 0.18);
+    transform: translateX(105%);
+    transition: transform 220ms ease, visibility 220ms ease;
+    visibility: hidden;
   }
 
-  .header-links {
+  .site-header__drawer.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .site-header__logo {
+    width: 54px;
+    height: 54px;
+  }
+
+  .site-header__nav {
+    justify-self: initial;
+  }
+
+  .site-header__links {
+    align-items: stretch;
+    flex-direction: column;
     gap: 8px;
-    flex-wrap: wrap;
   }
 
-  .header-links a {
-    padding: 7px 9px;
+  .site-header__links a {
+    display: block;
+    padding: 13px 4px;
+    border-bottom: 1px solid rgba(45, 37, 30, 0.12);
+    font-size: 1rem;
+  }
+
+  .site-header__links a,
+  .site-header__login,
+  .site-header__user,
+  .site-header__logout {
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+
+  .site-header__actions {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .site-header__user {
+    gap: 9px;
+    font-size: 1rem;
+  }
+
+  .site-header__user svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .site-header__logout {
+    align-self: flex-start;
+    padding: 8px 0;
+    font-size: 0.96rem;
+  }
+
+  .site-header__signup {
+    min-height: 44px;
+    width: 100%;
+    font-size: 0.96rem;
+  }
+
+  .site-header__login {
+    padding: 8px 0;
+    font-size: 0.96rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__drawer {
+    transition: none;
   }
 }

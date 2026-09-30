@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
+import brandLogo from "../../assets/MyLogo.jpeg";
 import Header from "../../templates/Header.jsx";
+import Footer from "../../templates/Footer.jsx";
 import "./Register.css";
+
 
 export default function Register() {
   const [form, SetForm] = useState({
@@ -73,9 +76,12 @@ export default function Register() {
   return (
     <>
       <Header />
-      <div className="register-page">
+      <main className="register-page">
         <div className="register-card">
           <h1 className="register-title">Create your account</h1>
+          <p className="register-signin">
+            Already have an account? <Link to="/login">Sign in</Link>
+          </p>
           <br />
           {message && <p className="login-message">{message}</p>}
           {error && <p className="error-message">{error}</p>}
@@ -278,13 +284,19 @@ export default function Register() {
             <button className="register-submit" type="submit">
               Register Account
             </button>
-
-            <p className="register-signin">
-              Already have an account? <Link to="/login">Sign in</Link>
-            </p>
           </form>
         </div>
-      </div>
+        <aside className="register-brand">
+          <img src={brandLogo} alt="Takawedo Beverages Distribution" />
+          <p className="register-brand__eyebrow">Join the team</p>
+          <h2>Good work is shared.</h2>
+          <p className="register-brand__copy">
+            Create your account to get connected with your branch and
+            department.
+          </p>
+        </aside>
+      </main>
+      <Footer/>
     </>
   );
 }

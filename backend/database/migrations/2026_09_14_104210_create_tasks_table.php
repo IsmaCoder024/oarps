@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('activity_id')->constrained('activities')->onDelete('cascade');
             $table->string('title');
-            $table->string('description')->nullable;
-            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->string('description')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
+            $table->integer('rating')->nullable();   
             $table->timestamps();
         });
     }

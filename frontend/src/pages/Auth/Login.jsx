@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import api from "../../services/api";
 import { useAuth } from "./../../context/AuthContext.jsx";
+import brandLogo from "../../assets/MyLogo.jpeg";
 import Header from "../../templates/Header.jsx";
 import Loading from "../../templates/Loading.jsx";
 import "./Login.css";
@@ -41,7 +42,7 @@ export default function Login() {
 
       await getUser();
 
-      const from = location.state?.from?.pathname || "/home";
+      const from = location.state?.from?.pathname || "/dashboard";
 
       navigate(from, { replace: true });
     } catch (error) {
@@ -56,12 +57,21 @@ export default function Login() {
       <Header />
       <Loading isLoading={loading} message="Authenticating..." />
 
-      <div className="login-page">
-        <div className="flash-message">
-          {message && <p className="login-message">{message}</p>}
-          {error && <p className="error-message">{error}</p>}
-        </div>
+      <main className="login-page">
+        <aside className="login-brand">
+          <img src={brandLogo} alt="Takawedo Beverages Distribution" />
+          <p className="login-brand__eyebrow">Takawedo Beverages</p>
+          <h2>Good to have you back.</h2>
+          <p className="login-brand__copy">
+            Sign in to stay connected with your team and keep every detail
+            moving.
+          </p>
+        </aside>
         <div className="login-card">
+          <div className="flash-message" aria-live="polite">
+            {message && <p className="login-message">{message}</p>}
+            {error && <p className="error-message">{error}</p>}
+          </div>
           <h1 className="login-title">Welcome back</h1>
 
           <form className="login-form" onSubmit={handleSubmit}>
@@ -109,7 +119,7 @@ export default function Login() {
             </button>
           </form>
         </div>
-      </div>
+      </main>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import "./UserManagement.css";
+import Header from "../../templates/Header";
 
 const emptyForm = {
   f_name: "",
@@ -140,7 +141,10 @@ export default function UserManagement() {
   };
 
   return (
+    <div className="page">
+    <Header/>
     <div className="user-management">
+      
       <div className="user-management__header">
         <h1>User Management</h1>
       </div>
@@ -365,6 +369,7 @@ export default function UserManagement() {
           </div>
         </div>
       ) : null}
+    </div>
     </div>
   );
 }

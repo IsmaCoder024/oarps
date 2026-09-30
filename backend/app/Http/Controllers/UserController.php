@@ -24,6 +24,19 @@ class UserController extends Controller
 
     }
 
+    public function search(Request $request)
+    {
+        $q = $request->query('q');
+
+        return User::query()
+            ->where('f_name', 'like', "%{$q}%")
+            ->orWhere('l_name', 'like', "%{$q}%")
+            ->orWhere('email', 'like', "%{$q}%")
+            ->select('id', 'f_name', 'l_name', 'email')
+            ->limit(10)
+            ->get();
+    }
+
     public function create(Request $request)
     {
         $this->ensureAdmin();

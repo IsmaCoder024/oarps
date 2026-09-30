@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\TaskController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -23,6 +24,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/getUsers', [UserController::class, 'index']);
 
+    Route::get('/users/search', [UserController::class, 'search']);
+
     Route::post('/createUser', [UserController::class, 'create']);
     Route::put('/editUser/{id}', [UserController::class, 'edit']);
     Route::delete('/deleteUser/{id}', [UserController::class, 'delete']);
@@ -34,7 +37,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/createActivity', [ActivityController::class, 'create']);
     Route::get('/assignedActivity', [ActivityController::class, 'viewAssigned']);
     
-
+    Route::post('/activities/{activity}/tasks', [TaskController::class, 'create']);
+    Route::get('/getAssignments', [TaskController::class, 'assignments']);
+    Route::patch('/remarks/{assignment}', [TaskController::class, 'remarks']);
+    
+    Route::get('/assignedTask', [TaskController::class, 'assigned']);
+    Route::patch('/assignedTask/{assignment}', [TaskController::class, 'mark']);
+    
 
 });
 

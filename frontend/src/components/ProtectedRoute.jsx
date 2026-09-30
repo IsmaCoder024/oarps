@@ -2,7 +2,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import Loading from '../templates/Loading.jsx';
 
-function ProtectedRoute() {
+function ProtectedRoute({ allowedRoles }) {
 
     const { user, loading } = useAuth();
     const location = useLocation();
@@ -19,6 +19,13 @@ function ProtectedRoute() {
                 replace
             />
         );
+    }
+
+    if (
+        allowedRoles &&
+        !allowedRoles.includes(String(user.role ?? '').toLowerCase())
+    ) {
+        return <Navigate to="/dashboard" replace />;
     }
 
     return <Outlet />;

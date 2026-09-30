@@ -55,4 +55,10 @@ class User extends Authenticatable
     public function assigns(){
         return $this->hasMany(Activity::class);
     }
+
+    public function task_assigns(){
+        return $this->hasMany(Task_assignment::class);
+    }
+
+
 }

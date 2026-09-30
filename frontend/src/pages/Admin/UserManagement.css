@@ -1,3 +1,19 @@
+.page{
+  --ink: #29231f;
+  --muted-ink: #625950;
+  --gold: #a97619;
+  --gold-light: #d8ad4b;
+  --paper: #fffefa;
+  --soft-paper: #f5f1e8;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(148deg, transparent 0 38%, rgba(169, 118, 25, 0.07) 38.1% 38.4%, transparent 38.5%),
+    linear-gradient(32deg, transparent 0 76%, rgba(41, 35, 31, 0.045) 76.1% 76.35%, transparent 76.45%),
+    linear-gradient(118deg, #fffefa 0%, #f8f0dd 34%, #ead39c 72%, #f6edda 100%);
+  color: var(--ink);
+}
+
 .user-management {
   width: min(1100px, calc(100% - 32px));
   margin: 32px auto 48px;

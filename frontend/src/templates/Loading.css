@@ -17,7 +17,7 @@
 	border: 1px solid rgb(255 255 255 / 70%);
 	border-radius: 0.75rem;
 	color: #172033;
-	background: #ffffff;
+	background: linear-gradient(118deg, #fffefa 0%, #f8f0dd 34%, #d1aa50 72%, #d8a028 100%);
 	box-shadow: 0 1rem 2.5rem rgb(15 23 42 / 20%);
 	font-size: 3rem;
 	font-weight: 200;
@@ -25,8 +25,20 @@
 
 .loading-spinner {
 	flex: 0 0 auto;
-	color: #4a77d9;
+	color:   #b38a33;
 	animation: loading-spin 0.9s linear infinite;
+}
+
+.loading-spinner-2 {
+	flex: 0 0 auto;
+	color:   #201e1a;
+	animation: loading-spin 1s linear infinite;
+}
+
+.loading-spinner-3 {
+	flex: 0 0 auto;
+	color:   #f9f9f9;
+	animation: loading-spin 1.2s linear infinite;
 }
 
 @keyframes loading-spin {

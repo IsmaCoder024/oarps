@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('task_assignments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('assigned_to')->constrained('users')->onDelete('cascade');
             $table->foreignId('assigned_by')->constrained('users')->onDelete('cascade');
+            $table->unique(['task_id', 'assigned_to']);
+            $table->enum('status', ['Assigned', 'In progress', 'Completed', 'Cancelled', 'Incomplete', 'On hold'])->default('Assigned');
+            $table->date('completed_at')->nullable();  
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

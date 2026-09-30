@@ -9,8 +9,10 @@ export default function Loading({ isLoading, message = 'Loading...' }) {
     return (
         <div className="loading-overlay" role="status" aria-live="polite">
             <div className="loading-popup">
-                <LoaderCircle className="loading-spinner" size={150} aria-hidden="true" />
-                <span>{message}</span>
+                <LoaderCircle className="loading-spinner" size={90} aria-hidden="true" />
+                <LoaderCircle className="loading-spinner-2" size={90} aria-hidden="true" />
+                <LoaderCircle className="loading-spinner-3" size={90} aria-hidden="true" />
+                {/* <span>{message}</span> */}
             </div>
         </div>
     );
