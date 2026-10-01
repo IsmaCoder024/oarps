@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import Header from "../../templates/Header.jsx";
+import "./AssignTask.css";
 
 export default function AssignTask() {
   const { activityId } = useParams();
@@ -112,14 +113,16 @@ export default function AssignTask() {
   return (
     <>
       <Header />
-      <div>
-        {activityId}
-        <h2>Create and Assign Task</h2>
+      <main className="assign-task-page">
+        <header className="assign-task-heading">
+          <p>Activity {activityId}</p>
+          <h1>Create and assign a task</h1>
+        </header>
 
-        {message && <p>{message}</p>}
+        {message && <p className="assign-task-message" role="status">{message}</p>}
 
-        <form onSubmit={handleSubmit}>
-          <section>
+        <form className="assign-task-form" onSubmit={handleSubmit}>
+          <section className="task-details-section">
             <h3>Task details</h3>
             <div>
               <label>Task Title</label>
@@ -162,9 +165,9 @@ export default function AssignTask() {
             </div>
           </section>
 
-          <section>
+          <section className="task-people-section">
             <h3>Assign to users</h3>
-            <div>
+            <div className="user-search-controls">
               <label>Search User</label>
               <input
                 type="text"
@@ -178,11 +181,11 @@ export default function AssignTask() {
               </button>
             </div>
 
-            <div>
+            <div className="user-results">
               <h4>Search Results</h4>
 
               {users.map((user) => (
-                <div key={user.id}>
+                <div className="user-result-row" key={user.id}>
                   <span>
                     {user.f_name} {user.l_name} - {user.email}
                   </span>
@@ -194,11 +197,11 @@ export default function AssignTask() {
               ))}
             </div>
 
-            <div>
+            <div className="selected-users">
               <h4>Selected Users</h4>
 
               {selectedUsers.map((user) => (
-                <div key={user.id}>
+                <div className="selected-user-row" key={user.id}>
                   <span>
                     {user.f_name} {user.l_name} - {user.email}
                   </span>
@@ -211,11 +214,11 @@ export default function AssignTask() {
             </div>
           </section>
 
-          <button type="submit" disabled={loading}>
+          <button className="assign-task-submit" type="submit" disabled={loading}>
             {loading ? "Assigning..." : "Create and Assign Task"}
           </button>
         </form>
-      </div>
+      </main>
     </>
   );
 }

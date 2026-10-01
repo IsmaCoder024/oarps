@@ -1,0 +1,121 @@
+.assigned-activity-page {
+  --page-ink: #182c36;
+  --page-muted: #61737a;
+  --page-line: #d8e2df;
+  --page-accent: #087e70;
+  width: min(100% - 40px, 1000px);
+  margin: 0 auto;
+  padding: 44px 0 64px;
+  color: var(--page-ink);
+  text-align: left;
+}
+
+.assigned-activity-heading {
+  margin-bottom: 26px;
+}
+
+.assigned-activity-heading p {
+  margin: 0 0 6px;
+  color: var(--page-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.assigned-activity-heading h1 {
+  margin: 0;
+  color: var(--page-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.assigned-activity-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+}
+
+.activity-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--page-line);
+  border-top: 3px solid var(--page-accent);
+  background: #fff;
+  box-shadow: 0 8px 22px rgb(24 44 54 / 5%);
+}
+
+.activity-details {
+  display: grid;
+  gap: 13px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+
+.activity-details li:not(.activity-title) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  color: var(--page-ink);
+  font-size: 14px;
+}
+
+.activity-details li span {
+  color: var(--page-muted);
+  font-size: 13px;
+}
+
+.activity-details .activity-title {
+  color: var(--page-ink);
+  font-size: 21px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.activity-action {
+  min-height: 42px;
+  padding: 0 16px;
+  border: 0;
+  background: var(--page-accent);
+  color: white;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.activity-action:hover {
+  background: #06675d;
+  transform: translateY(-1px);
+}
+
+.activity-action:focus-visible {
+  outline: 3px solid #91d6c9;
+  outline-offset: 2px;
+}
+
+.activity-empty {
+  grid-column: 1 / -1;
+  padding: 24px 0;
+  color: var(--page-muted);
+}
+
+@media (max-width: 600px) {
+  .assigned-activity-page {
+    width: min(100% - 28px, 1000px);
+    padding: 30px 0 44px;
+  }
+
+  .assigned-activity-heading h1 {
+    font-size: 29px;
+  }
+
+  .activity-card {
+    padding: 18px;
+  }
+}

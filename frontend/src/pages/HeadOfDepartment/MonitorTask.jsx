@@ -5,6 +5,18 @@ import Header from "../../templates/Header.jsx";
 import { Star } from "lucide-react"
 import "./MonitorTask.css";
 
+const getStatusClass = (status) => {
+  const normalizedStatus = String(status ?? "")
+    .toLowerCase()
+    .replace(/[\s_-]+/g, "");
+
+  if (normalizedStatus === "completed") return "completed";
+  if (["cancelled", "canceled", "incomplete"].includes(normalizedStatus)) {
+    return "attention";
+  }
+
+  return "pending";
+};
 
 export default function MonitorTask() {
   const [assignments, setAssignments] = useState([]);
@@ -14,6 +26,7 @@ export default function MonitorTask() {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const ratingLabels = {
     1: "Poor",
@@ -62,6 +75,7 @@ export default function MonitorTask() {
       });
       console.log(response.data);
       setMessage(response.data.message);
+      navigate("/monitorTask");
     } catch (error) {
       console.error(error.response?.data);
       setError(error.response?.data?.error);
@@ -71,22 +85,31 @@ export default function MonitorTask() {
   return (
     <>
       <Header />
-      <div>
+      <main className="monitor-task-page">
+        <header className="monitor-task-heading">
+          <p>Department workspace</p>
+          <h1>Monitor tasks</h1>
+        </header>
         {assignments.map((assignment) => (
-          <div>
-            <section key={assignment.id}>
+          <article className="monitor-task-card" key={assignment.id}>
+            <section className="monitor-task-summary">
               <h3>{assignment.task.title}</h3>
               <li>
-                Assigned to : {assignment?.assignee.f_name}{" "}
+                <span>Assigned to</span> {assignment?.assignee.f_name}{" "}
                 {assignment?.assignee.l_name}
               </li>
-              <li>Assigned at : {assignment?.task.end_date}</li>
-              <li>Date of completion : {assignment?.task.end_date}</li>
+              <li><span>Due date</span> {assignment?.task.end_date}</li>
+              <li>
+                <span>Status</span>
+                <span className={`task-status task-status--${getStatusClass(assignment.status)}`}>
+                  {assignment.status}
+                </span>
+              </li>
               {/* <li>{assignment.task.title}</li> */}
-              <li>{assignment.status}</li>
-              <li>Remarked : {assignment?.remarks}</li>
+              <li><span>Remarks</span> {assignment?.remarks || "None"}</li>
             </section>
             <button
+              className="monitor-task-toggle"
               onClick={() =>
                 setOpenSectionId((currentId) =>
                   currentId === assignment.id ? null : assignment.id,
@@ -97,7 +120,7 @@ export default function MonitorTask() {
             </button>
 
             {openSectionId === assignment.id && (
-              <section>
+              <section className="monitor-task-review">
                 
 
                 <div
@@ -125,14 +148,14 @@ export default function MonitorTask() {
                     </button>
                   ))}
                 </div>
-
+ 
                 <p className="rating-label">
                   {rating > 0
                     ? ratingLabels[hoverRating || rating]
                     : "No rating selected"}
                 </p>
 
-                <div>
+                <div className="monitor-task-remarks">
                   <label>Remarks</label>
                   <input
                     id="remarks"
@@ -151,14 +174,17 @@ export default function MonitorTask() {
                   </p>
                 )}
 
-                <button onClick={() => handleSubmit(assignment.id)}>
+                <button className="submit-rating" onClick={() => handleSubmit(assignment.id)}>
                   Submit
                 </button>
               </section>
             )}
-          </div>
+          </article>
         ))}
-      </div>
+        {assignments.length === 0 && (
+          <p className="monitor-task-empty">No task assignments to monitor.</p>
+        )}
+      </main>
     </>
   );
 }

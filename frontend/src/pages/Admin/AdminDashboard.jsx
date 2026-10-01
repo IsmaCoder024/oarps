@@ -111,7 +111,7 @@ export default function AdminDashboard() {
               </article>
             );
           })}
-        </section>
+        </section> 
 
         {hasPartialData && (
           <p className="admin-dashboard__notice" role="status">
