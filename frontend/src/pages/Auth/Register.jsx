@@ -31,7 +31,7 @@ export default function Register() {
   useEffect(() => {
     const getDepartments = async () => {
       try {
-        const response = await api.get("/api/departments");
+        const response = await api.get("/departments");
         setDepartments(response.data);
       } catch (error) {
         console.error(error.response?.data);
@@ -40,7 +40,7 @@ export default function Register() {
 
     const getBranches = async () => {
       try {
-        const response = await api.get("/api/branches");
+        const response = await api.get("/branches");
         setBranches(response.data);
       } catch (error) {
         console.error(error.response?.data);
