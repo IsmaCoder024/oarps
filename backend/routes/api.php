@@ -15,6 +15,12 @@ Route::get('/test', function () {
     ]);
 });
 
+Route::get('/test-cors-config', function () {
+    return response()->json([
+        'frontend_url' => config('cors.allowed_origins'),
+    ]);
+});
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
