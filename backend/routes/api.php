@@ -17,7 +17,8 @@ Route::get('/test', function () {
 
 Route::get('/test-cors-config', function () {
     return response()->json([
-        'frontend_url' => config('cors.allowed_origins'),
+        'env' => env('FRONTEND_URL'),
+        'config' => config('cors.allowed_origins'),
     ]);
 });
 
