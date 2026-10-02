@@ -189,6 +189,9 @@ export default function Register() {
                     required
                   >
                     <option value="">Select Branch</option>
+                    <option value="Main">Main</option>
+                    <option value="Morogoro">Morogoro</option>
+                    <option value="Dodoma">Dodoma</option>
                     {branches.map((branch) => (
                       <option key={branch.id} value={branch.name}>
                         {branch.name}
@@ -209,6 +212,9 @@ export default function Register() {
                     required
                   >
                     <option value="">Select Department</option>
+                    <option value="Procurement">Procurement</option>
+                    <option value="Human Resources">Human Resources</option>
+                    <option value="ICT">ICT</option>
                     {departments.map((department) => (
                       <option key={department.id} value={department.name}>
                         {department.name}
