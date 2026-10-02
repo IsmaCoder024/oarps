@@ -8,6 +8,13 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\TaskController;
 
+Route::get('/test', function () {
+    return response()->json([
+        'success' => true,
+        'message' => 'Laravel API is working',
+    ]);
+});
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
