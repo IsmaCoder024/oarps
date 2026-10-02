@@ -23,7 +23,7 @@ Route::get('/test-cors-config', function () {
 });
 
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('web')->post('/login', [AuthController::class, 'login']);
 
 Route::get('/departments', [DepartmentController::class, 'index']);
 Route::get('/branches', [BranchController::class, 'index']);
