@@ -12,11 +12,22 @@ export function AuthProvider({ children }) {
 
         try {
 
+            const token = localStorage.getItem('auth_token');
+
+            // No token means the user is not authenticated
+            if (!token) {
+                setUser(null);
+                return;
+            }
+
             const response = await api.get('/api/user');
 
             setUser(response.data);
 
         } catch (error) {
+
+            // Token is invalid/expired
+            localStorage.removeItem('auth_token');
 
             setUser(null);
 
