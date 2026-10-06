@@ -83,7 +83,8 @@ export default function Header() {
         </nav>
 
         <div className="site-header__actions">
-          <House size={16} />
+          <Link to="/home"><House size={16} /></Link>
+          
           {!loading && user ? (
             <>
               <span className="site-header__user">
