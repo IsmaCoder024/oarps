@@ -34,21 +34,25 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await api.get("/sanctum/csrf-cookie");
-
       const response = await api.post("/api/login", form);
 
-      setMessage(response.data.message);
+        // Save authentication token
+        localStorage.setItem("auth_token", response.data.token);
 
-      await getUser();
+        setMessage(response.data.message);
 
-      const from = location.state?.from?.pathname || "/dashboard";
+        await getUser();
 
-      navigate(from, { replace: true });
+        const from = location.state?.from?.pathname || "/dashboard";
+
+        navigate(from, { replace: true });
+
     } catch (error) {
-      setError(error.response?.data?.error);
+        setError(
+            error.response?.data?.error || "Login failed"
+        );
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   };
 
