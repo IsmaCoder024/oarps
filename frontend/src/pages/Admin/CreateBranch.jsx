@@ -9,38 +9,14 @@ export default function CreateDepartment() {
   const [form, SetForm] = useState({
     name: "",
     description: "",
-    branch_id: "",
-    hod_id: "",
+    location: "",
   });
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [hods, setHods] = useState([]);
-  const [branches, setBranches] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getHods = async () => {
-      try {
-        const response = await api.get("/api/hods");
-        setHods(response.data);
-      } catch (error) {
-        console.error(error.response?.data);
-      }
-    };
-
-    const getBranches = async () => {
-      try {
-        const response = await api.get("/api/branches");
-        setBranches(response.data);
-      } catch (error) {
-        console.error(error.response?.data);
-      }
-    };
-
-    getHods();
-    getBranches();
-  }, []);
+  ;
 
   const handleChange = (e) => {
     SetForm({
@@ -53,11 +29,11 @@ export default function CreateDepartment() {
     e.preventDefault();
 
     try {
-      const response = await api.post("/api/createDepartment", form);
+      const response = await api.post("/api/createBranch", form);
       console.log(response.data);
       await setMessage(response.data.message);
 
-      navigate("/home");
+      navigate("/dashboard");
     } catch (error) {
       console.error(error.response?.data);
       setError(error.response?.data?.error);
@@ -80,7 +56,7 @@ export default function CreateDepartment() {
               
                 <div className="register-field">
                   <label className="register-field-label" htmlFor="f_name">
-                    Department Name
+                    Branch Name
                   </label>
                   <input
                     id="name"
@@ -115,49 +91,24 @@ export default function CreateDepartment() {
               <div className="register-row register-row-2">
                 <div className="register-field">
                   <label className="register-field-label" htmlFor="branch">
-                    Branch
+                    Location
                   </label>
-                  <select
-                    id="branch_id"
-                    name="branch_id"
-                    value={form.branch_id}
+                  <input
+                    id="location"
+                    type="text"
+                    name="location"
+                    value={form.location}
                     onChange={handleChange}
-                    required
-                  >
-                    <option value="">Select Branch</option>
-                    {branches.map((branch) => (
-                      <option key={branch.id} value={branch.id}>
-                        {branch.name}
-                      </option>
-                    ))}
-                  </select>
+                    placeholder=""
+                  />
                 </div>
 
-                <div className="register-field">
-                  <label className="register-field-label" htmlFor="department">
-                    Head Of Department
-                  </label>
-                  <select
-                    id="hod_id"
-                    name="hod_id"
-                    value={form.hod_id}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Select HOD</option>
-                    {hods.map((hod) => (
-                      <option key={hod.id} value={hod.id}>
-                        {hod.f_name} {hod.l_name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
               </div>
             </section>
 
             
             <button className="register-submit" type="submit">
-              Create Department
+              Create Branch
             </button>
           </form>
         </div>

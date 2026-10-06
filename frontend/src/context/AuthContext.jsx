@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
 
             // No token means the user is not authenticated
             if (!token) {
-                setUser(null);
+                setUser(null); 
                 return;
             }
 

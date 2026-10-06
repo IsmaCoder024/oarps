@@ -46,6 +46,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/hods', [DepartmentController::class, 'hod']);
     Route::post('/createDepartment', [DepartmentController::class, 'create']);
+     Route::post('/createBranch', [BranchController::class, 'create']);
+
 
 
     Route::post('/createActivity', [ActivityController::class, 'create']);

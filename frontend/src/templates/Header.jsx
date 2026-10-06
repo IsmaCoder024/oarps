@@ -27,6 +27,7 @@ export default function Header() {
       await api.post("/api/logout");
 
         localStorage.removeItem("auth_token");
+        setUser(null);
 
       setMenuOpen(false);
       navigate("/login");

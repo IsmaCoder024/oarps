@@ -48,7 +48,7 @@ class DepartmentController extends Controller
             ]);
 
             return response()->json([
-                'message' => 'Department created',
+                'message' => 'New department created',
             ], 200);
         } else {
             return response()->json([

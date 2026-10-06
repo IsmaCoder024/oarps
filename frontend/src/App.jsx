@@ -12,6 +12,7 @@ import AssignedActivity from "./pages/HeadOfDepartment/AssignedActivity";
 import AssignTask from "./pages/HeadOfDepartment/AssignTask";
 import MonitorTask from "./pages/HeadOfDepartment/MonitorTask";
 import CreateDepartment from "./pages/Admin/CreateDepartment";
+import CreateBranch from "./pages/Admin/CreateBranch";
 import AssignedTask from "./pages/Staff/AssignedTask";
 import { Monitor } from "lucide-react";
 
@@ -32,6 +33,7 @@ export default function App() {
         </Route>
         <Route path="/userManagement" element={<UserManagement />}></Route>
         <Route path="/createDepartment" element={<CreateDepartment />}></Route>
+        <Route path="/createBranch" element={<CreateBranch />}></Route>
 
         {/*manager routes*/}
         <Route path="/createActivity" element={<CreateActivity />}></Route>
