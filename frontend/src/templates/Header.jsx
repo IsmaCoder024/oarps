@@ -29,7 +29,7 @@ export default function Header() {
         localStorage.removeItem("auth_token");
 
       setMenuOpen(false);
-      navigate("/home");
+      navigate("/login");
     } catch (error) {
       console.error(error.response?.data);
     }
