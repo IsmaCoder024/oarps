@@ -25,7 +25,9 @@ export default function Header() {
   const handleSignOut = async () => {
     try {
       await api.post("/api/logout");
-      setUser(null);
+
+        localStorage.removeItem("auth_token");
+
       setMenuOpen(false);
       navigate("/home");
     } catch (error) {
