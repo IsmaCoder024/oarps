@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CircleUserRound, Menu, X } from "lucide-react";
+import { CircleUserRound, House, Menu, X } from "lucide-react";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext.jsx";
 import brandLogo from "../assets/MyLogo.jpeg";
@@ -83,9 +83,7 @@ export default function Header() {
         </nav>
 
         <div className="site-header__actions">
-          <li>
-              <Link to="/home">Home</Link>
-            </li>
+          <House size={16} />
           {!loading && user ? (
             <>
               <span className="site-header__user">
