@@ -83,6 +83,9 @@ export default function Header() {
         </nav>
 
         <div className="site-header__actions">
+          <li>
+              <Link to="/home">Home</Link>
+            </li>
           {!loading && user ? (
             <>
               <span className="site-header__user">
